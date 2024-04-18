@@ -22,6 +22,7 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<PedidoDTO> cadastrar(@Valid @RequestBody CadastroPedidoDTO dto, @AuthenticationPrincipal Usuario usuario) {
         var pedido = this.service.cadastrar(dto, usuario);
+        System.out.println("Thread do email " + Thread.currentThread().getName());
         email.enviar(pedido, usuario);
         return ResponseEntity.ok(pedido);
     }
