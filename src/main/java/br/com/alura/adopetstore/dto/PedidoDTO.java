@@ -10,4 +10,5 @@ public record PedidoDTO(Long id, LocalDate data, List<ItemPedidoDTO> itens) {
     public PedidoDTO(Pedido pedido) {
         this(pedido.getId(), pedido.getData(), pedido.getItens().stream().map(ItemPedidoDTO::new).collect(Collectors.toList()));
     }
+
 }

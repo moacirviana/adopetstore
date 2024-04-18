@@ -42,11 +42,14 @@ public class PedidoService {
                 throw new ValidacaoException("Estoque indisponível para o produto: " + itemDto.produtoId());
             }
         }
-
         var pedido = new Pedido(itens, usuario);
         repository.save(pedido);
-
         return new PedidoDTO(pedido);
-
     }
+
+    public PedidoDTO findById(Long pedido_id){
+        PedidoDTO obj = new PedidoDTO(repository.findById(pedido_id).get());
+        return obj;
+    }
+
 }
