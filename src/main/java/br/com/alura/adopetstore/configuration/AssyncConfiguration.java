@@ -12,9 +12,9 @@ public class AssyncConfiguration {
     @Bean
     public Executor assyncExecutor(){
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(3);
-        executor.setMaxPoolSize(3);
-        executor.setQueueCapacity(100);
+        executor.setCorePoolSize(3); // minimo de threads criadas
+        executor.setMaxPoolSize(5);
+        executor.setQueueCapacity(100); // capacidade máxima da fila
         executor.setThreadNamePrefix("AsyncThread-");
         executor.initialize();
         return executor;
