@@ -23,6 +23,7 @@ public class AgendamentoService {
         CompletableFuture.allOf(estoqueZerado, faturamento).join();
         try {
             enviador.enviar(estoqueZerado.get(), faturamento.get());
+            //enviador.enviar(estoqueZerado.getNow(null), faturamento.getNow(null));
         } catch (ExecutionException | InterruptedException e) {
             throw new RuntimeException(e);
         }
