@@ -34,7 +34,9 @@ public class ProdutoService {
         estoqueRepository.save(estoque);
         return new ProdutoDTO(produto);
     }
-
+    public ProdutoDTO findById(Long id){
+        return new ProdutoDTO(repository.findById(id).get());
+    }
     public Page<ProdutoDTO> listar(Pageable paginacao){
         return repository.findAll(paginacao).map(ProdutoDTO::new);
     }

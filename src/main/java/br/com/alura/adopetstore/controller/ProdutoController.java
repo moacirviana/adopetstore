@@ -37,6 +37,12 @@ public class ProdutoController {
         return ResponseEntity.ok(produtos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ProdutoDTO> findById(@PathVariable Long id) {
+        var produto = this.service.findById(id);
+        return ResponseEntity.ok(produto);
+    }
+
     @DeleteMapping("{id}")
     @Transactional
     public ResponseEntity<Void> excluir(@PathVariable Long id) {
